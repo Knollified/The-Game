@@ -18,3 +18,4 @@ The Krypt is a text-based RPG with the end goal to beat the Skeleton King.
 - Continue to Next floor interaction.
 
 ## Wire Frame:
+![Wire Frame](https://github.com/Knollified/The-Krypt.github.io/blob/master/assets/screencapture-wireframepro-mockflow-editor-jsp-2020-03-12-13_42_00.png)
