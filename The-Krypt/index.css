@@ -1,0 +1,180 @@
+html, body{
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+    margin: 0px;
+    padding: 0px;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+}
+
+#header {
+    color: goldenrod;
+}
+
+.GameSpace > h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+
+}
+
+.GameSpace > h3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+
+}
+
+.GameSpace > p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+
+}
+
+.ClassSelect{
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: row;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.ClassSelect > a{
+    text-decoration: none;
+}
+
+.Avatar{
+    height: 300px;
+    width: 200px;
+}
+
+#Mage{
+    height: 300px;
+    width: 200px;
+}
+
+#Rouge{
+    height: 300px;
+    width: 200px;
+}
+
+#Warrior{
+    height: 300px;
+    width: 200px;
+}
+
+#MageDesc > h3:hover {
+    background-color: lightgreen;
+}
+
+#RougeDesc > h3:hover{
+    background-color: lightgreen;
+}
+
+#WarriorDesc > h3:hover{
+    background-color: lightgreen;
+}
+
+#WarriorDesc {
+    font-size: 15pt;
+    color: goldenrod;
+}
+
+#MageDesc {
+    font-size: 15pt;
+    color: goldenrod;
+}
+
+#RougeDesc {
+    font-size: 15pt;
+    color: goldenrod;
+}
+.btnChoice{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.Fight-btn > p {
+    display: flex;
+    text-decoration: nine;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20pt;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 100px;
+    padding-right: 100px;
+    letter-spacing: 35px;
+    color: red;
+    border: 4px dashed white;
+    margin: inherit;
+}
+
+.Defend-btn > p{
+    display: flex;
+    text-decoration: nine;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20pt;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    letter-spacing: 35px;
+    color: red;
+    border: 4px dashed red;
+    margin: inherit;
+
+}
+.Attack-btn >p{
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20pt;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    letter-spacing: 35px;
+    color: yellow;
+    border: 4px dashed yellow;
+    margin: inherit;
+
+}
+.Enemy > h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+
+}
+
+.Enemy > h3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+
+}
+
+.Enemy > p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+
+}
+.Enemy > HealthMob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Krypt</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="./js/Game.js" async defer></script>
+    <script src="./js/Mobs.js" async defer></script>
+    <script src="./js/Player.js" async defer></script>
+</head>
+<body>
+    <header id="header">
+        <h1>Welcome To The Krypt!</h1>
+    </header>
+    <div class="GameSpace">
+        <h2>Select Your Class</h2>
+        <div class="ClassSelect">
+            <a href="#" onclick="game.gameStart('Mage')">
+                <img id="Mage" src="./assets/Player/Mage.jpg" alt="Mage">
+                <div id="MageDesc">
+                    <h3>Mage</h3>
+                    <p>Skilled in the magical arts, the mage is a well balanced class in terms of Attack and HP.</p>
+                </div>
+            </a>
+            <a href="#" onclick="game.gameStart('Rouge')">
+                <img id="Rouge" src="./assets/Player/Rouge.jpg" alt="Rouge">
+                <div id="RougeDesc">
+                    <h3>Rouge</h3>
+                    <p>The rouge is adept in Speed and Attack taking it's enemy by surprise and silencing them.</p>
+                </div>
+            </a>
+            <a href="#" onclick="game.gameStart('Warrior')">
+                <img  id="Warrior" src="./assets/Player/Warrior.jpg" alt="Warrior">
+                <div id="WarriorDesc">
+                    <h3>Warrior</h3>
+                    <p>The Warrior Is Skilled In Attack and Defense using his strength to take a hit and deliver punishment.</p>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+    <div class="PlayerAction">
+
+    </div>
+    <div class="GameEvents">
+
+    </div>
+    <div class="Enemy">
+
+    </div>
+</body>
+</html>
