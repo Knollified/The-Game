@@ -1,4 +1,3 @@
-Checkdead();
 //basic game object and its methods
 let game = {
     gameStart: function (classType) {
@@ -21,7 +20,7 @@ let game = {
         //changes the game space
         let getGameSpace = document.querySelector(".GameSpace");
 
-        getGameSpace.innerHTML = '<img src="./assets/Player/' + classType + '.jpg" class="Avatar" alt=""><div class="GameSpace"><h3>' + classType + '</h3><p class="HealthPlayer">Health: ' + Player._health + '</p><p>Attack: '+ Player._attack +'</p><p>Speed: ' + Player._speed + '</p><p>Defense: ' + Player._defense + '</p></div>';
+        getGameSpace.innerHTML = '<div class="wrapper1"><img src="./assets/Player/' + classType + '.jpg" class="Avatar" alt=""><div class="GameSpace"><h3>' + classType + '</h3><p class="HealthPlayer">Health: ' + Player._health + '</p><p>Attack: '+ Player._attack +'</p><p>Speed: ' + Player._speed + '</p><p>Defense: ' + Player._defense + '</p></div></div>';
     },
     //changes the header, adds player action, adds game events.
     setFloor: function (){
@@ -70,97 +69,62 @@ let PlayerMoves = {
         let mobDefense = Mob._defense;
         let playerHealth = Player._health ;
         let mobHealth = Mob._health;
-        let Checkdead = () =>{
-            if(Mob._health <= 0){
-                game.setFloor();
-            }
-            if(Player._health <= 0){
-                game.setFloor();
-            }
-        };
-        Checkdead();
         let pHealthDesc = document.querySelector(".HealthPlayer");
         let mHealthDesc = document.querySelector(".HealthMob");
-        Checkdead();
+        let getGameEvents = document.querySelector(".GameEvents");
         //if player is faster
         if(mobHealth > 0  && playerHealth > 0){
-            Checkdead();
             if(mobSpeed <= playerSpeed){
-                Checkdead();
                 if(mobDefense > playerAttack){
-                    Checkdead();
                     Mob._health = (mobHealth - playerAttack) + 1;
-                    Checkdead();
                     if(mobHealth > 0){
-                        Checkdead();
-                        Player._health = (playerHealth - mobAttack) - 1;
+                        Player._health = playerHealth - mobAttack;
                     }
-                    Checkdead();
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
                 }else if(mobDefense < playerAttack){
-                    Checkdead();
-                    Mob._health = (mobHealth - playerAttack) - 1;
-                    Checkdead();
+                    Mob._health = (mobHealth - playerAttack) - 2;
                     if(mobHealth > 0){
-                        Checkdead();
                         Player._health = playerHealth - mobAttack;
                     }
-                    Checkdead();
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
                 }else if(mobDefense === playerAttack){
-                    Checkdead();
                     Mob._health = mobHealth - playerAttack;
-                    Checkdead();
                     if(mobHealth > 0){
-                        Checkdead();
                         Player._health = playerHealth - mobAttack;
                     }
-                    Checkdead();
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
                 }
             }else if(mobSpeed > playerSpeed){
-                Checkdead();
                 if(playerDefense > mobAttack){
-                    Checkdead();
                     Player._health = (playerHealth - mobAttack) + 1;
-                    Checkdead();
                     if(playerHealth > 0){
-                        Checkdead();
-                        Mob._health = (playerHealth - mobAttack) - 1;
+                        Mob._health = mobHealth - playerAttack;
                     }
-                    Checkdead();
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack - 1) + ' damage!</p>';
                 }else if(playerDefense < mobAttack){
-                    Checkdead();
                     Player._health = (playerHealth - mobAttack) - 1;
-                    Checkdead();
                     if(playerHealth > 0){
-                        Checkdead();
-                        Mob._health = playerHealth - mobAttack;
+                        Mob._health = mobHealth - playerAttack;
                     }
-                    Checkdead();
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack + 1) + ' damage!</p>';
                 }else if(playerDefense === mobAttack){
-                    Checkdead();
                     Player._health = playerHealth - mobAttack;
-                    Checkdead();
                     if(playerHealth > 0){
-                        Mob._health = playerHealth - mobAttack;
+                        Mob._health = mobHealth - playerAttack;
                     }
-                    Checkdead();
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
                 }
             }
         }else{
@@ -168,74 +132,68 @@ let PlayerMoves = {
         }
     },
     DefendDodge: function(){
-        let Checkdead = () =>{
-            if(Mob._health <= 0){
-                game.setFloor();
-            }
-            if(Player._health <= 0){
-                game.setFloor();
-            }
-        };
-        Checkdead();
+        let playerSpeed = Player._speed ;
+        let mobSpeed = Mob._speed;
+        let playerAttack = Player._attack ;
+        let mobAttack = Mob._attack;
+        let playerDefense = Player._defense ;
+        let mobDefense = Mob._defense;
+        let playerHealth = Player._health ;
+        let mobHealth = Mob._health;
         let pHealthDesc = document.querySelector(".HealthPlayer");
         let mHealthDesc = document.querySelector(".HealthMob");
+        let getGameEvents = document.querySelector(".GameEvents");
         //if player is faster
         if(mobHealth > 0  && playerHealth > 0){
             if(mobSpeed < playerSpeed){
-                if(mobDefense > playerAttack){
-                    Checkdead();
+                if(mobAttack < playerDefense){
                     if(mobHealth > 0){
                         Player._health = (playerHealth - mobAttack) + 3;
                     }
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
-                }else if(mobDefense < playerAttack){
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack - 3) + ' damage!</p>';
+                }else if(mobAttack > playerDefense){
                     if(mobHealth > 0){
-                        Player._health = (playerHealth - mobAttack) - 2;
+                        Player._health = (playerHealth - mobAttack) - 1;
                     }
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack - 1) + ' damage!</p>';
                 }else if(mobDefense === playerAttack){
-                    Checkdead();
-                    if(mobHealth > 0){
-                        Player._health = playerHealth - mobAttack;
-                    }
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack * 0) + ' damage!</p>';
                 }
             }else if(mobSpeed > playerSpeed){
                 if(playerDefense > mobAttack){
-                    Checkdead();
                     if(mobHealth > 0){
-                        Player._health = (playerHealth - mobAttack) + 3;
+                        Player._health = (playerHealth - mobAttack) + 2;
                     }
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack - 2) + ' damage!</p>';
                 }else if(playerDefense < mobAttack){
-                    Checkdead();
                     if(mobHealth > 0){
-                        Player._health = (playerHealth - mobAttack) - 2;
+                        Player._health = (playerHealth - mobAttack) - 1;
                     }
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack - 1) + ' damage!</p>';
                 }else if(playerDefense === mobAttack){
-                    Checkdead();
-                    if(mobHealth > 0){
-                        Player._health = playerHealth - mobAttack;
-                    }
                     mHealthDesc.innerHTML ='Health: ' + Mob._health;
                     pHealthDesc.innerHTML ='Health: ' + Player._health;
-                    Checkdead();
+                    getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack * 0) + ' damage!</p>';
                 }
             }
         }else{
             game.setFloor();
         }
+    }
+};
+
+let Death = {
+    Check: function (){
+
     }
 };

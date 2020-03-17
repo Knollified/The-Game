@@ -2,15 +2,19 @@ html, body{
     display: flex;
     flex-direction: column;
     flex-flow: column;
-    margin: 0px;
-    padding: 0px;
-    height: auto;
+    margin: 10px;
+    padding: 10px;
     justify-content: center;
     text-align: center;
     background-color: black;
+    resize: initial;
+    overflow: auto;
 }
-
 #header {
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+
     color: goldenrod;
 }
 
@@ -37,7 +41,6 @@ html, body{
     color: goldenrod;
 
 }
-
 .ClassSelect{
     display: flex;
     justify-content:space-evenly;
@@ -51,6 +54,7 @@ html, body{
 }
 
 .Avatar{
+    justify-content:center;
     height: 300px;
     width: 200px;
 }
@@ -153,6 +157,7 @@ html, body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     color: goldenrod;
 
 }
@@ -161,6 +166,7 @@ html, body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     color: goldenrod;
 
 }
@@ -169,6 +175,7 @@ html, body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     color: goldenrod;
 
 }
@@ -177,4 +184,23 @@ html, body{
     flex-direction: column;
     justify-content: center;
     color: goldenrod;
+}
+.GameEvents {
+    display: flex;
+    font-size: 20pt;
+    flex-direction: column;
+    justify-content: center;
+    color: goldenrod;
+
+}
+.wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.wrapper1{
+    display: flex;
+    align-content:center ;
+    justify-content: center;
+    flex-direction: column;
 }

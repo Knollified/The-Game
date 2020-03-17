@@ -6,4 +6,5 @@ function mob (mobType,health,attack,speed,defense) {
     this._attack = attack;
     this._speed = speed;
     this._defense = defense;
+    
 }

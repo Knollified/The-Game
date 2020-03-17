@@ -1,5 +1,5 @@
 let Player;
-
+let pAlive = true;
 function player (classType, health, attack, speed, defense) {
     this._classType = classType;
     this._health = health;
