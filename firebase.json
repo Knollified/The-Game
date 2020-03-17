@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "the-krypt-io",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
