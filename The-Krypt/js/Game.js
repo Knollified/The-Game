@@ -9,13 +9,13 @@ let game = {
     resetPlayer: function (classType) {
         switch (classType) {
             case 'Mage':
-                Player = new player (classType, 15, 5, 5, 5);
+                Player = new player (classType, 20, 5, 5, 5);
                 break;
             case 'Rouge':
-                Player = new player (classType, 10, 7, 7, 3);
+                Player = new player (classType, 15, 7, 7, 3);
                 break;
             case 'Warrior':
-                Player = new player (classType, 20, 7, 3, 7);
+                Player = new player (classType, 25, 7, 3, 7);
                 break;
         }
         //changes the game space
@@ -38,9 +38,9 @@ let game = {
         let getPlayerAction = document.querySelector(".PlayerAction");
         let getEnemy = document.querySelector(".Enemy");
         //create an enemy
-        let enemy00 = new mob ("Skeleton", Math.floor((Math.random() + 0.06) * 10), Math.floor((Math.random() + 0.06) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
-        let enemy01 = new mob ("Skeleton-General", Math.floor((Math.random() + 0.09) * 10), Math.floor((Math.random() + 0.06) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
-        let enemy02 = new mob ("Skeleton-Mage", Math.floor((Math.random() + 0.06) * 10), Math.floor((Math.random() + 0.09) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
+        let enemy00 = new mob ("Skeleton", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
+        let enemy01 = new mob ("Skeleton-General", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
+        let enemy02 = new mob ("Skeleton-Mage", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.09) * 10), Math.floor((Math.random() + 0.04) * 10));
         let enemy03 = new mob ("Skeleton-King", 18, 8, 7, 6);
         let randomEnemyGen = Math.floor(Math.random() * Math.floor(3));
         switch (randomEnemyGen) {
@@ -64,7 +64,7 @@ let game = {
     },
     ScoreCheck: function () {
         // boss check
-        if(score >= 55 && score <= 58){
+        if(score >= 30 && score <= 33){
             let getHeader = document.querySelector("#header");
             let getPlayerAction = document.querySelector(".PlayerAction");
             let getEnemy = document.querySelector(".Enemy");
@@ -76,7 +76,7 @@ let game = {
         let getPlayerAction = document.querySelector(".PlayerAction");
         let getEnemy = document.querySelector(".Enemy");
         //create an enemy
-        let enemy03 = new mob ("Skeleton-King", Math.floor((Math.random() + 0.6) * 10), Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.1) * 10));
+        let enemy03 = new mob ("Skeleton-King", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.4) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
         let randomEnemyGen = Math.floor(Math.random() * Math.floor(3));
         switch (randomEnemyGen) {
             case 0:
@@ -104,6 +104,10 @@ let PlayerMoves = {
         let getPlayerAction = document.querySelector(".PlayerAction");
         if (MobHealth <= 0){
             if (Mob._mobType !== 'Skeleton-King'){
+                if (PlayerHealth <= 0 && MobHealth <= 0) {
+                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                }
                 score = score +1;
                 console.log(score);
                 game.setFloor();
@@ -111,11 +115,18 @@ let PlayerMoves = {
                 getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
                 game.ScoreCheck();
             }else if (Mob._mobType === 'Skeleton-King'){
+                if (PlayerHealth <= 0 && MobHealth <= 0) {
+                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                }else{
                 getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
                 getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-
+                }
             }
         }else if (PlayerHealth <= 0){
+            getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+            getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+        }else if (PlayerHealth <= 0 && MobHealth <= 0) {
             getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
             getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
         }
@@ -139,6 +150,7 @@ let PlayerMoves = {
                     Mob._health = (mobHealth - playerAttack) + 1;
                     PlayerMoves.Check();
                     if(mobHealth > 0){
+                        PlayerMoves.Check();
                         Player._health = playerHealth - mobAttack;
                         PlayerMoves.Check();
                     }
@@ -149,6 +161,7 @@ let PlayerMoves = {
                     Mob._health = (mobHealth - playerAttack) - 2;
                     PlayerMoves.Check();
                     if(mobHealth > 0){
+                        PlayerMoves.Check();
                         Player._health = playerHealth - mobAttack;
                         PlayerMoves.Check();
                     }
@@ -159,6 +172,7 @@ let PlayerMoves = {
                     Mob._health = mobHealth - playerAttack;
                     PlayerMoves.Check();
                     if(mobHealth > 0){
+                        PlayerMoves.Check();
                         Player._health = playerHealth - mobAttack;
                         PlayerMoves.Check();
                     }
@@ -173,6 +187,7 @@ let PlayerMoves = {
                     Player._health = (playerHealth - mobAttack) + 1;
                     PlayerMoves.Check();
                     if(playerHealth > 0){
+                        PlayerMoves.Check();
                         Mob._health = mobHealth - playerAttack;
                         PlayerMoves.Check();
                     }
@@ -183,6 +198,7 @@ let PlayerMoves = {
                     Player._health = (playerHealth - mobAttack) - 1;
                     PlayerMoves.Check();
                     if(playerHealth > 0){
+                        PlayerMoves.Check();
                         Mob._health = mobHealth - playerAttack;
                         PlayerMoves.Check();
                     }
@@ -193,6 +209,7 @@ let PlayerMoves = {
                     Player._health = playerHealth - mobAttack;
                     PlayerMoves.Check();
                     if(playerHealth > 0){
+                        PlayerMoves.Check();
                         Mob._health = mobHealth - playerAttack;
                         PlayerMoves.Check();
                     }
@@ -225,6 +242,7 @@ let PlayerMoves = {
             if(playerHealth > 0){
                 if(mobAttack < playerDefense){
                     if(mobHealth > 0){
+                        PlayerMoves.Check();
                         Player._health = (playerHealth - mobAttack) + 2;
                         PlayerMoves.Check();
                     }
@@ -233,6 +251,7 @@ let PlayerMoves = {
                     getGameEvents.innerHTML = '<p>You have taken ' + (mobAttack - 2) + ' damage!</p>';
                 }else if(playerDefense < mobAttack){
                     if(mobHealth > 0){
+                        PlayerMoves.Check();
                         Player._health = (playerHealth - mobAttack) - 1;
                         PlayerMoves.Check();
                     }
