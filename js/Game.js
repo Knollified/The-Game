@@ -22,7 +22,7 @@ let game = {
         let getGameSpace = document.querySelector(".GameSpace");
 
         getGameSpace.innerHTML = '<div class="wrapper1"><img src="./assets/Player/' + classType + '.jpg" class="Avatar" alt=""><div class="GameSpace"><h3>' + classType + '</h3><p class="HealthPlayer">Health: ' + Player._health + '</p><p>Attack: '+ Player._attack +'</p><p>Speed: ' + Player._speed + '</p><p>Defense: ' + Player._defense + '</p></div></div>';
-    },    
+    },
     //changes the header, adds player action, adds game events.
     setFloor: function (){
         let getHeader = document.querySelector("#header");
@@ -77,16 +77,18 @@ let game = {
         let getEnemy = document.querySelector(".Enemy");
         //create an enemy
         let enemy03 = new mob ("Skeleton-King", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.4) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
+        let enemy04 = new mob ("Skeleton-Dragon", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.4) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
+        let enemy05 = new mob ("Undead-Queen", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.4) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
         let randomEnemyGen = Math.floor(Math.random() * Math.floor(3));
         switch (randomEnemyGen) {
             case 0:
                 Mob = enemy03;
                 break;
             case 1:
-                Mob = enemy03;
+                Mob = enemy04;
                 break;
             case 2:
-                Mob =  enemy03;
+                Mob =  enemy05;
                 break;
         }
         //getHeader.innerHTML =
