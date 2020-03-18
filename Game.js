@@ -9,13 +9,13 @@ let game = {
     resetPlayer: function (classType) {
         switch (classType) {
             case 'Mage':
-                Player = new player (classType, 20, 5, 5, 5);
+                Player = new player (classType, 25, 5, 5, 5);
                 break;
             case 'Rouge':
-                Player = new player (classType, 15, 7, 7, 3);
+                Player = new player (classType, 20, 7, 7, 3);
                 break;
             case 'Warrior':
-                Player = new player (classType, 25, 7, 3, 7);
+                Player = new player (classType, 28, 7, 3, 7);
                 break;
         }
         //changes the game space
@@ -38,9 +38,9 @@ let game = {
         let getPlayerAction = document.querySelector(".PlayerAction");
         let getEnemy = document.querySelector(".Enemy");
         //create an enemy
-        let enemy00 = new mob ("Skeleton", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
-        let enemy01 = new mob ("Skeleton-General", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
-        let enemy02 = new mob ("Skeleton-Mage", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.09) * 10), Math.floor((Math.random() + 0.04) * 10));
+        let enemy00 = new mob ("Skeleton", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
+        let enemy01 = new mob ("Skeleton-General", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
+        let enemy02 = new mob ("Skeleton-Mage", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.09) * 10), Math.floor((Math.random() + 0.04) * 10));
         let randomEnemyGen = Math.floor(Math.random() * Math.floor(3));
         switch (randomEnemyGen) {
             case 0:
@@ -75,9 +75,9 @@ let game = {
         let getPlayerAction = document.querySelector(".PlayerAction");
         let getEnemy = document.querySelector(".Enemy");
         //create an enemy
-        let enemy03 = new mob ("Skeleton-King", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.4) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
-        let enemy04 = new mob ("Skeleton-Dragon", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.4) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
-        let enemy05 = new mob ("Undead-Queen", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.4) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
+        let enemy03 = new mob ("Skeleton-King", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
+        let enemy04 = new mob ("Skeleton-Dragon", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
+        let enemy05 = new mob ("Undead-Queen", Math.floor((Math.random() + 0.8) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.7) * 5), 9);
         let randomEnemyGen = Math.floor(Math.random() * Math.floor(3));
         switch (randomEnemyGen) {
             case 0:
