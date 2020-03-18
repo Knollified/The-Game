@@ -63,7 +63,7 @@ let game = {
     },
     ScoreCheck: function () {
         // boss check
-        if(score >= 30){
+        if(score >= 45){
             let getHeader = document.querySelector("#header");
             let getPlayerAction = document.querySelector(".PlayerAction");
             let getEnemy = document.querySelector(".Enemy");
@@ -103,19 +103,9 @@ let PlayerMoves = {
         let PlayerHealth = Player._health;
         let getGameEvents = document.querySelector(".GameEvents");
         let getPlayerAction = document.querySelector(".PlayerAction");
-        if (MobHealth <= 0){
-            if (Mob._mobType !== 'Skeleton-King'){
-                if (PlayerHealth <= 0 && MobHealth <= 0) {
-                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-                }
-                score = score +1;
-                console.log(score);
-                game.setFloor();
-                game.resetPlayer(Player._classType);
-                getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
-                game.ScoreCheck();
-            }else if (Mob._mobType !== 'Skeleton-Dragon'){
+        //All Other Mobs
+        if (Mob._mobType === 'Skeleton' || Mob._mobType === 'Skeleton-Mage' || Mob._mobType === 'Skeleton-General'){
+            if (MobHealth <= 0){
                     if (PlayerHealth <= 0 && MobHealth <= 0) {
                         getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
                         getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
@@ -126,48 +116,106 @@ let PlayerMoves = {
                     game.resetPlayer(Player._classType);
                     getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
                     game.ScoreCheck();
-            }else if (Mob._mobType !== 'Undead-Queen'){
-                if (PlayerHealth <= 0 && MobHealth <= 0) {
-                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-                }
+            }else if (PlayerHealth <= 0){
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            }else if (PlayerHealth <= 0 && MobHealth <= 0) {
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            };
+        }
+        //Skeleton-King
+        if(Mob._mobType === 'Skeleton-King'){
+            if (MobHealth <= 0){
+                if (Mob._mobType !== 'Skeleton-King'){
+                    if (PlayerHealth <= 0 && MobHealth <= 0) {
+                        getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }
                     score = score +1;
                     console.log(score);
                     game.setFloor();
                     game.resetPlayer(Player._classType);
                     getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
                     game.ScoreCheck();
-            }else if (Mob._mobType === 'Skeleton-King'){
-                if (PlayerHealth <= 0 && MobHealth <= 0) {
-                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-                }else{
-                    getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-                }
-            }else if (Mob._mobType === 'Skeleton-Dragon'){
-                if (PlayerHealth <= 0 && MobHealth <= 0) {
+                }else if (Mob._mobType === 'Skeleton-King'){
+                    if (PlayerHealth <= 0 && MobHealth <= 0) {
                         getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
                         getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-                }else{
-                    getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }else if(MobHealth <= 0){
+                        getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
+                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }
                 }
-            }else if (Mob._mobType === 'Undead-Queen'){
-                if (PlayerHealth <= 0 && MobHealth <= 0) {
+            }else if (PlayerHealth <= 0){
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            }else if (PlayerHealth <= 0 && MobHealth <= 0) {
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            };
+        }
+        //Skeleton-Dragon
+        if(Mob._mobType === 'Skeleton-Dragon'){
+            if (MobHealth <= 0 && PlayerHealth > 0){
+                if (Mob._mobType !== 'Skeleton-Dragon'){
+                    if (PlayerHealth <= 0 && MobHealth <= 0) {
                         getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
                         getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-                }else{
-                    getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }
+                    score = score +1;
+                    console.log(score);
+                    game.setFloor();
+                    game.resetPlayer(Player._classType);
+                    getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
+                    game.ScoreCheck();
+                }else if (Mob._mobType === 'Skeleton-Dragon'){
+                    if (PlayerHealth <= 0 && MobHealth <= 0) {
+                            getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                            getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }else if(MobHealth <= 0){
+                        getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
+                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }
                 }
-            }
-        }else if (PlayerHealth <= 0){
-            getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-            getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-        }else if (PlayerHealth <= 0 && MobHealth <= 0) {
-            getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-            getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            }else if (PlayerHealth <= 0){
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            }else if (PlayerHealth <= 0 && MobHealth <= 0) {
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            };
+        }
+        //Undead-Queen
+        if(Mob._mobType === 'Undead-Queen'){
+            if (MobHealth <= 0 && PlayerHealth > 0){
+                if (Mob._mobType !== 'Undead-Queen'){
+                    if (PlayerHealth <= 0 && MobHealth <= 0) {
+                        getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }
+                        score = score +1;
+                        console.log(score);
+                        game.setFloor();
+                        game.resetPlayer(Player._classType);
+                        getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
+                        game.ScoreCheck();
+                }else if (Mob._mobType === 'Undead-Queen'){
+                    if (PlayerHealth <= 0 && MobHealth <= 0) {
+                            getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                            getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }else if(MobHealth <= 0){
+                        getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
+                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                    }
+                }
+            }else if (PlayerHealth <= 0){
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            }else if (PlayerHealth <= 0 && MobHealth <= 0) {
+                getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+            };
         }
     },
     Attack: function(){
