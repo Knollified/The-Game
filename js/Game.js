@@ -41,7 +41,6 @@ let game = {
         let enemy00 = new mob ("Skeleton", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
         let enemy01 = new mob ("Skeleton-General", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.08) * 10), Math.floor((Math.random() + 0.04) * 10));
         let enemy02 = new mob ("Skeleton-Mage", Math.floor((Math.random() + 0.2) * 10), Math.floor((Math.random() + 0.1) * 10), Math.floor((Math.random() + 0.09) * 10), Math.floor((Math.random() + 0.04) * 10));
-        let enemy03 = new mob ("Skeleton-King", 18, 8, 7, 6);
         let randomEnemyGen = Math.floor(Math.random() * Math.floor(3));
         switch (randomEnemyGen) {
             case 0:
@@ -64,7 +63,7 @@ let game = {
     },
     ScoreCheck: function () {
         // boss check
-        if(score >= 30 && score <= 33){
+        if(score >= 30 && score <= 40){
             let getHeader = document.querySelector("#header");
             let getPlayerAction = document.querySelector(".PlayerAction");
             let getEnemy = document.querySelector(".Enemy");
@@ -105,7 +104,7 @@ let PlayerMoves = {
         let getGameEvents = document.querySelector(".GameEvents");
         let getPlayerAction = document.querySelector(".PlayerAction");
         if (MobHealth <= 0){
-            if (Mob._mobType !== 'Skeleton-King'){
+            if (Mob._mobType !== 'Skeleton-King' && Mob._mobType !== 'Skeleton-Dragon' && Mob._mobType !== 'Undead-Queen'){
                 if (PlayerHealth <= 0 && MobHealth <= 0) {
                     getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
                     getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
@@ -116,7 +115,7 @@ let PlayerMoves = {
                 game.resetPlayer(Player._classType);
                 getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
                 game.ScoreCheck();
-            }else if (Mob._mobType === 'Skeleton-King'){
+            }else if (Mob._mobType === 'Skeleton-King' || Mob._mobType === 'Skeleton-Dragon' || Mob._mobType === 'Undead-Queen'){
                 if (PlayerHealth <= 0 && MobHealth <= 0) {
                     getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
                     getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
