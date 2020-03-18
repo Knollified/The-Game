@@ -63,7 +63,7 @@ let game = {
     },
     ScoreCheck: function () {
         // boss check
-        if(score >= 30 && score <= 33){
+        if(score >= 30){
             let getHeader = document.querySelector("#header");
             let getPlayerAction = document.querySelector(".PlayerAction");
             let getEnemy = document.querySelector(".Enemy");
@@ -126,19 +126,19 @@ let PlayerMoves = {
                     game.resetPlayer(Player._classType);
                     getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
                     game.ScoreCheck();
-                }else if (Mob._mobType !== 'Undead-Queen'){
-                    if (PlayerHealth <= 0 && MobHealth <= 0) {
-                        getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
-                    }
+            }else if (Mob._mobType !== 'Undead-Queen'){
+                if (PlayerHealth <= 0 && MobHealth <= 0) {
+                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                }
                     score = score +1;
                     console.log(score);
                     game.setFloor();
                     game.resetPlayer(Player._classType);
                     getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated</p>';
                     game.ScoreCheck();
-                }else if (Mob._mobType === 'Skeleton-King'){
-                    if (PlayerHealth <= 0 && MobHealth <= 0) {
+            }else if (Mob._mobType === 'Skeleton-King'){
+                if (PlayerHealth <= 0 && MobHealth <= 0) {
                     getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
                     getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
                 }else{
@@ -147,16 +147,16 @@ let PlayerMoves = {
                 }
             }else if (Mob._mobType === 'Skeleton-Dragon'){
                 if (PlayerHealth <= 0 && MobHealth <= 0) {
-                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                        getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
                 }else{
                     getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
                     getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
                 }
             }else if (Mob._mobType === 'Undead-Queen'){
                 if (PlayerHealth <= 0 && MobHealth <= 0) {
-                    getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
-                    getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
+                        getGameEvents.innerHTML ='<p> You Were Defeated!</p>';
+                        getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
                 }else{
                     getGameEvents.innerHTML = Mob._mobType + '<p>Was Defeated You Cleared The Krpyt!</p>';
                     getPlayerAction.innerHTML = '<div><a href="#" class="Fight-btn" onclick="game.GameRestart()"><p>Restart</p></div>';
@@ -258,8 +258,10 @@ let PlayerMoves = {
                 }
             }
         }else if (mobSpeed === playerSpeed){
+            PlayerMoves.Check();
             Player._health = playerHealth - mobAttack;
             Mob._health = mobHealth - playerAttack;
+            PlayerMoves.Check();
             getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
             PlayerMoves.Check();
         }
