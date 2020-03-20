@@ -62,7 +62,7 @@ let game = {
         location.reload();
     },
     ScoreCheck: function () {
-        // boss check
+        //boss spawn check
         if(score >= 45){
             let getHeader = document.querySelector("#header");
             let getPlayerAction = document.querySelector(".PlayerAction");
@@ -230,7 +230,7 @@ let PlayerMoves = {
         let pHealthDesc = document.querySelector(".HealthPlayer");
         let mHealthDesc = document.querySelector(".HealthMob");
         let getGameEvents = document.querySelector(".GameEvents");
-        //if player is faster
+        //check if player  or mob is faster with attack actions
         if(mobSpeed < playerSpeed){
             if(playerHealth > 0){
                 if(mobDefense > playerAttack){
@@ -268,7 +268,8 @@ let PlayerMoves = {
                     getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
                 }
             }
-        }else if (mobSpeed > playerSpeed){
+        };
+        if (mobSpeed > playerSpeed){
             if(mobHealth > 0){
                 if(playerDefense > mobAttack){
                     Player._health = (playerHealth - mobAttack) + 1;
@@ -305,14 +306,15 @@ let PlayerMoves = {
                     getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
                 }
             }
-        }else if (mobSpeed === playerSpeed){
+        };
+        if (mobSpeed === playerSpeed){
             PlayerMoves.Check();
             Player._health = playerHealth - mobAttack;
             Mob._health = mobHealth - playerAttack;
             PlayerMoves.Check();
             getGameEvents.innerHTML = '<p>You have taken ' + mobAttack + ' damage!</p>';
             PlayerMoves.Check();
-        }
+        };
     },
     DefendDodge: function(){
         let playerSpeed = Player._speed ;
@@ -326,7 +328,7 @@ let PlayerMoves = {
         let pHealthDesc = document.querySelector(".HealthPlayer");
         let mHealthDesc = document.querySelector(".HealthMob");
         let getGameEvents = document.querySelector(".GameEvents");
-        //if player is faster
+        //check if player  or mob is faster With defense actions
         if(mobSpeed < playerSpeed){
             if(playerHealth > 0){
                 if(mobAttack < playerDefense){
